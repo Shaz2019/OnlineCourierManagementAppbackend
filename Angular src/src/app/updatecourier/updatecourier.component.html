@@ -1,0 +1,37 @@
+<div style='background-color:rgb(190, 211, 132)'>
+    <form #courierForm='ngForm' (submit)='updated(courierForm.value)'>
+        <div class='form-group'>
+            <label for="cid">Courier Id</label>
+            <input type="number" id='cid' class='form-control' ngModel name='courierId' #tcid='ngModel' required>
+        </div>
+        <div *ngIf='tcid.touched && tcid.invalid' class='alert alert-danger'>
+            Please enter courier Id.This field is required.
+        </div>
+
+        <div class='form-group'>
+            <label for="rid">Receiver Id</label>
+            <input type="number" id='rid' class='form-control' ngModel name='receiverId' #trid='ngModel' required>
+        </div>
+        <div *ngIf='trid.touched && trid.invalid' class='alert alert-danger'>
+            Please enter receiver Id.This field is required.
+        </div>
+
+        <div class='form-group'>
+            <label for="sid">Sender Id</label>
+            <input type="number" id='sid' class='form-control' ngModel name='senderId' #tsid='ngModel' required>
+        </div>
+        <div *ngIf='tsid.touched && tsid.invalid' class='alert alert-danger'>
+            Please enter sender Id.This field is required.
+        </div>
+
+        <button type="submit" class='btn btn-success'>Submit</button>
+        <a [routerLink]='["/courier"]'><button class='btn btn-danger'>Back</button></a>
+    </form>
+    <div *ngIf='successMessage!=null' class='alert alert-success'>{{successMessage}}</div>
+    <div *ngIf='errorMessage!=null' class='alert alert-danger'>{{errorMessage}}</div>
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger'>
+            {{msg}}
+        </p>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div style='background-color:rgb(190, 211, 132)'>
+    <h3 style='text-align: center;'>Find Office</h3>
+
+    <form #officeForm='ngForm' (submit)='show(officeForm)'>
+        <div class='form-group'>
+            <label for='oid'>Office ID</label>
+            <input id='oid' class='form-control' type='number' ngModel name='officeId' #tofficeId='ngModel' required>
+        </div>
+        <div *ngIf='tofficeId.touched && tofficeId.invalid' class='alert alert-danger'>
+            Please enter Office ID. This field is mandatory.
+        </div>
+
+        <button type= 'submit' class='btn btn-primary btn-block' [disabled]='officeForm.invalid'>Submit</button>
+        <a [routerLink]="['/office']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+</div>
+
+<div *ngIf= 'check == true' style='background-color:rgb(211, 174, 132)'>
+    <h3 style='text-align: center;'>Office Data</h3>
+    <table class='table'>
+        <tr>
+            <th>Office ID</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+            <th>Address ID</th>
+            <th>House No</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Zip</th>
+            <th>ACTION</th>
+        </tr>
+        <tr style='padding: 2 px;'>
+            <td>{{office.officeId}}</td>
+            <td>{{office.openingTime}}</td>
+            <td>{{office.closingTime}}</td>
+            <td>{{office.address.addressId}}</td>
+            <td>{{office.address.houseNo}}</td>
+            <td>{{office.address.street}}</td>
+            <td>{{office.address.city}}</td>
+            <td>{{office.address.state}}</td>
+            <td>{{office.address.country}}</td>
+            <td>{{office.address.zip}}</td>
+            <td>
+                <button class= 'btn btn-danger' (click)='delete(office.officeId)'>Delete</button>
+                <div>
+                    <button class= 'btn btn-primary' (click)='checkStatus(office.officeId)'>Office Status</button>
+                    <p class='alert alert-success'>{{message}}</p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <a [routerLink]="['']"><button class='btn btn-danger btn-block' (click)='check=false' >Back</button></a>
+</div>
+
+<div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+    {{errorMessage}}
+</div>

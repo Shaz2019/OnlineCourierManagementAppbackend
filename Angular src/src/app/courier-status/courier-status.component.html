@@ -1,0 +1,47 @@
+<div style='background-color:rgb(190, 211, 132)'>
+    <h3 style='text-align: center;'>Find Courier</h3>
+
+    <form #courierForm='ngForm' (submit)='get(courierForm)'>
+        <div class='form-group'>
+            <label for="cid">Courier ID</label>
+            <input id='cid' type="number" class='form-control' ngModel name='courierId' #cid='ngModel' required>
+        </div>
+        <div *ngIf='cid.touched && cid.invalid' class='alert alert-danger'>
+            This field is required.
+        </div>
+        <button type='submit' class='btn btn-primary' [disabled]='courierForm.invalid'>Submit</button>
+        <a [routerLink]="['/courier']"><button class='btn btn-danger'>Back</button></a>
+
+    </form>
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>
+
+<div *ngIf='check' style='background-color:rgb(211, 174, 132)' >
+    <h3 style='text-align: center;'>Courier info</h3>
+    <table class="table">
+        <tr>
+            <th>Courier ID</th>
+            <th>Consignment Number</th>
+            <th>Initiated Date</th>
+            <th>Delivered Date</th>
+            <th>Status</th>
+            <th>Sender Id</th>
+            <th>Receiver Id</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>{{courier.courierId}}</td>
+            <td>{{courier.consignmentNo}}</td>
+            <td>{{courier.initiatedDate}}</td>
+            <td>{{courier.deliveredDate}}</td>
+            <td>{{courier.status}}</td>
+            <td>{{courier.sender.customerId}}</td>
+            <td>{{courier.receiver.customerId}}</td>
+
+            <td><button class="btn btn-danger" (click)='delete(courier.courierId)'>Delete</button></td>
+        </tr>
+    </table>
+    <button class='btn btn-primary' (click)='check=false'>Back</button>
+</div>

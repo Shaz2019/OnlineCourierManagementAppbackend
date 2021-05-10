@@ -1,0 +1,51 @@
+
+.hr{
+    background-color: rgb(18, 92, 87);
+    text-align: center;
+    
+}
+
+.emp{
+    border:2px solid green;
+    border-radius: 10px;
+    margin:20px;
+    margin:5px;
+    width:1100px;
+    
+}
+
+.maindiv{
+    border:2px solid green;
+    border-radius: 10px;
+    margin:20px;
+    padding:10px;
+    width:auto;
+    float:left;
+    margin-left: 20%;
+}
+
+td{
+    font-style: 'italicks';
+}
+ 
+input.ng-touched.ng-invalid{
+    border: 3px solid red;
+}
+ 
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-style: italic;
+  }
+  
+tr:nth-child(even){background-color: #f2f2f2;}
+  
+tr:hover {background-color: #ddd;}
+  
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+  }

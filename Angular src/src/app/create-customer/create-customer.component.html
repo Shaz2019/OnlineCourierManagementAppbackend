@@ -1,0 +1,88 @@
+<div class='emp'>
+
+    <h3 style="text-align:center"> Create Customer</h3>
+
+
+    <form #empForm='ngForm' (submit)='createNew(empForm.value)'>
+
+        <!--<div class='form-group'>
+            <label for='eid'>Customer Id</label>
+            <input id='eid' class='form-control' type='text' ngModel name='empid' #tempId='ngModel' required>
+        </div>
+        <div *ngIf='tempId.touched && tempId.invalid' class='alert alert-danger'>
+            Please enter customer id. This field required
+        </div>
+    -->
+        <div class='form-group'>
+            <label for='ano'>Aadhar Id</label>
+            <input id='ano' class='form-control' type='text' ngModel name='aadharNo' #taadharNo='ngModel' required>
+        </div>
+        <div *ngIf='taadharNo.touched && taadharNo.invalid' class='alert alert-danger'>
+            Please enter aadhar id. This field required
+        </div>
+
+        <div class='form-group'>
+            <label for='fnm'>FirstName</label>
+            <input id='fnm' class='form-control' type='text' ngModel name='firstName' #tfirstName='ngModel' required>
+        </div>
+        <div *ngIf='tfirstName.touched && tfirstName.invalid'>
+            <div *ngIf='tfirstName.errors.required' class='alert alert-danger'>
+                Please enter firstname
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='lnm'>LastName</label>
+            <input id='lnm' class='form-control' type='text' ngModel name='lastName' #tlastName='ngModel' required>
+        </div>
+        <div *ngIf='tlastName.touched && tlastName.invalid'>
+            <div *ngIf='tlastName.errors.required' class='alert alert-danger'>
+                Please enter lastname
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='mno'>Mobile No</label>
+            <input id='mno' class='form-control' type='number' ngModel name='mobileNo' #tmobileNo='ngModel' required>
+        </div>
+        <div *ngIf='tmobileNo.touched && tmobileNo.invalid' class='alert alert-danger'>
+            Please enter Mobile no
+        </div>
+
+
+
+        <!-- <div class='form-group'>
+            <label for='adsid'>Address Id</label>
+            <input id='adsid' class='form-control' type='text' ngModel name='addressid' #taddressId='ngModel' required>
+        </div>
+        <div *ngIf='taddressId.touched && taddressId.invalid' class='alert alert-danger'>
+            Please enter address id. This field required
+        </div>
+
+
+        <div class='form-group'>
+            <label for='acno'>Bank Account</label>
+            <input id='acno' class='form-control' type='text' ngModel name='accountno' #taccountNo='ngModel' required>
+        </div>
+        <div *ngIf='taccountNo.touched && taccountNo.invalid' class='alert alert-danger'>
+            Please enter bankaccount no. This field required
+        </div>
+-->
+
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='empForm.invalid'>Submit</button>
+    </form>
+
+    <p class='alert alert-success' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger'>
+            {{msg}}
+        </p>
+    </div>
+</div>

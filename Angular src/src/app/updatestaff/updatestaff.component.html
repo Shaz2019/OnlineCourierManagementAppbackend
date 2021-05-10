@@ -1,0 +1,48 @@
+<div style='background-color:rgba(107, 150, 59, 0.705)' >
+    <h3 style="text-align:center">Update</h3>
+
+    <form #empForm='ngForm' (submit)='update(empForm)'>
+        <div class='form-group'>
+            <label for='eid'>Employee Id</label>
+            <input id='eid' class='form-control' type='number' ngModel name='empId' #tname='ngModel' required >
+        </div>
+        <div *ngIf='tname.touched && tname.invalid'>
+            <div *ngIf='tname.errors.required' class='alert alert-danger'>
+                Please Enter Employee Id 
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='mid'>Manager Id</label>
+            <input id='mid' class='form-control' type='number' ngModel name='mgrId' aria-describedby='mids' #tname='ngModel' required >
+            <small id='mids' class="form-text text-muted">Enter Manager(Employee Id)</small>
+        </div>
+        <div *ngIf='tname.touched && tname.invalid'>
+            <div *ngIf='tname.errors.required' class='alert alert-danger'>
+                Please Enter Manager(Employee Id)
+            </div>
+        </div>
+
+
+        <div class='form-group'>
+            <label for='oid'>Office Id</label>
+            <input id='oid' class='form-control' type='number' ngModel name='officeId' #tname='ngModel' required  >
+        </div>
+        <div *ngIf='tname.touched && tname.invalid'>
+            <div *ngIf='tname.errors.required' class='alert alert-danger'>
+                Please Enter Office Id
+            </div>
+        </div>
+
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='empForm.invalid'>Submit</button>
+        <a [routerLink]="['/manager']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+
+    <p  class='alert alert-success' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+   
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class='maindiv' *ngIf='errorMessage == null' style='background-color:rgb(231, 225, 223)'>
+    <h3 style='text-align: center;'>{{header}}</h3>
+    <table class="table table-hover">
+        <tr>
+            <th>Courier Office ID</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+            <th style='text-align: center;'>ACTION</th>
+        </tr>
+        <tr *ngFor='let office of offices' style='padding: 2px;'>
+            <td>{{office.officeId}}</td>
+            <td>{{office.openingTime}}</td>
+            <td>{{office.closingTime}}</td>
+            <td>
+                <button class='btn btn-danger' (click)='remove(office.officeId)'>Remove</button>
+            </td>
+        </tr>
+    </table>
+
+    <div *ngIf='message != null' (click)='message=null' class='alert alert-success'>
+        {{message}}
+    </div>
+    <div>
+        <a [routerLink]="['/office']"><button class='btn btn-danger btn-block'>Back</button></a>
+    </div>
+</div>
+<div *ngIf='errorMessage != null'>
+    <div class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+    <div>
+        <a [routerLink]="['/office']"><button class='btn btn-danger btn-block'>Back</button></a>
+    </div>
+</div>

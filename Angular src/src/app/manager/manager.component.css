@@ -1,0 +1,25 @@
+.add{
+    border-style: dotted;
+	border-width: 1px;
+	border-color: red;
+}
+.img1{
+    max-width: 5%;
+    max-height: 5%;
+    display: block; /* remove extra space below image */
+    float: left;
+}
+
+.img2{
+    max-width: 8%;
+    max-height: 8%;
+    display: block; /* remove extra space below image */
+    float: left;
+}
+
+.img3{
+    max-width: 12%;
+    max-height: 12%;
+    display: block; /* remove extra space below image */
+    float: left;
+}

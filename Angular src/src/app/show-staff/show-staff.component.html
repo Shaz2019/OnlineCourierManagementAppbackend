@@ -1,0 +1,60 @@
+<div style='background-color:rgb(190, 211, 132)' >
+    <h3 style="text-align:center">Find Employee</h3>
+
+    <form #empForm='ngForm' (submit)='show(empForm)'>
+        <div class='form-group'>
+            <label for='eid'>Employee Id</label>
+            <input id='eid' class='form-control' type='number' ngModel name='empId' >
+        </div>
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='empForm.invalid'>Submit</button>
+        <a [routerLink]="['/manager']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>
+
+
+<div *ngIf='check==true' class='emp' style='background-color:rgb(211, 174, 132)' >
+    <h3 style='text-align:center;'>Staff data</h3>
+    <table class='table'>
+        <tr>
+            <th>EMP ID</th>
+            <th>NAME</th>
+            <th>ROLE</th>
+            <th>AddressId</th>
+            <th>HouseNo</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Zip</th>
+            <th>OfficeId</th>
+            <th>ManagerId</th>
+            
+            <th>ACTION</th>
+        </tr>
+        <tr style='padding:2px'>
+            <td>{{emp.empId}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.role}}</td>
+            <td>{{emp.address.addressId}}</td>
+            <td>{{emp.address.houseNo}}</td>
+            <td>{{emp.address.street}}</td>
+            <td>{{emp.address.city}}</td>
+            <td>{{emp.address.state}}</td>
+            <td>{{emp.address.country}}</td>
+            <td>{{emp.address.zip}}</td>
+            <td>{{emp.office.officeId}}</td>
+            <td>{{emp.manager.empId}}</td>
+            
+
+            <td>
+                <button class='btn btn-danger' (click)='delete(emp.empId)'>Delete</button>
+            </td>
+        </tr>
+
+    </table>
+    <a [routerLink]="['/manager']"><button class='btn btn-danger btn-block' >Back</button></a>
+    
+</div>

@@ -1,0 +1,18 @@
+<div>
+    <form #courierForm='ngForm' (submit)='close(courierForm.value)'>
+        <div class='form-group'>
+            <label for="cid">Courier Id</label>
+            <input type="number" id='cid' class='form-control' ngModel name='courierId' #tcid='ngModel'>
+        </div>
+        <div *ngIf='tcid.touched && tcid.invalid' class='alert alert-danger'>
+            <p>Please enter courier Id. This field is required!</p>
+        </div>
+
+        <button type="submit" class='btn btn-success' [disabled]='courierForm.invalid'>Submit</button>
+        <a [routerLink]="['/courier']"><button class='btn btn-success'>Back </button></a>
+    </form>
+
+    <div *ngIf='successMessage!=null' class='alert alert-success' (click)='successMessage=null' >
+        {{successMessage}}
+    </div>
+</div>

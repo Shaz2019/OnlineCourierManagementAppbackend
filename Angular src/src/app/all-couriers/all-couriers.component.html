@@ -1,0 +1,36 @@
+<div class='maindiv' *ngIf='errorMessage == null' style='background-color:rgb(231, 225, 223)'>
+    <h3>{{header}}</h3>
+    <table class='table'>
+        <tr>
+            <th>COURIER ID</th>
+            <th>CONSIGNMENT NUMBER</th>
+            <th>INITIATED DATE</th>
+            <th>DELIVERED DATE</th>
+            <th>STATUS</th>
+            <th>RECEIVER CUSTOMER</th>
+            <th>SENDER CUSTOMER</th>
+            <th>ACTION</th>
+        </tr>
+        <tr *ngFor='let courier of couriers' style='padding:2px'>
+            <td>{{courier.courierId}}</td>
+            <td>{{courier.consignmentNo}}</td>
+            <td>{{courier.initiatedDate}}</td>
+            <td>{{courier.deliveredDate}}</td>
+            <td>{{courier.status}}</td>
+
+            <td>{{courier.receiver.customerId}}</td>
+            <td>{{courier.sender.customerId}}</td>
+            <td><button class='btn btn-danger' (click)='delete(courier.courierId)'>Delete</button></td>
+            <!--<td><a [routerLink]="['/update',emp.empid]" class='btn btn-primary'>Modify</a></td>-->
+        </tr>
+    </table>
+
+    <a [routerLink]="['/courier']"><button class='btn btn-success'>Back </button></a>
+    <div *ngIf='message != null' (click)='message=null' class='alert alert-success'>
+        {{message}}
+    </div>
+
+</div>
+<div class='alert alert-danger' *ngIf='errorMessage != null'>
+    <h2>{{errorMessage}}</h2>
+</div>

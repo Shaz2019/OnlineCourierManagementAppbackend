@@ -1,0 +1,46 @@
+<div style='background-color:rgba(107, 150, 59, 0.705)'  >
+    <h3 style="text-align:center">Update Office Address</h3>
+
+    <form #officeForm='ngForm' (submit)='updateAdd(officeForm)'>
+        <div class='form-group'>
+            <label for='oid'>Office Id</label>
+            <input id='oid' class='form-control' type='number' ngModel name='officeId' >
+        </div>
+        <div class='form-group'>
+            <label for='hid'>House No</label>
+            <input id='hid' class='form-control' type='text' ngModel name='houseNo' >
+        </div>
+        <div class='form-group'>
+            <label for='cid'>City</label>
+            <input id='cid' class='form-control' type='text' ngModel name='city' >
+        </div>
+        <div class='form-group'>
+            <label for='sid'>State</label>
+            <input id='sid' class='form-control' type='text' ngModel name='state' >
+        </div>
+        <div class='form-group'>
+            <label for='cid'>Country</label>
+            <input id='cid' class='form-control' type='text' ngModel name='country' >
+        </div>
+        <div class='form-group'>
+            <label for='pid'>ZIP(Pincode)</label>
+            <input id='pid' class='form-control' type='number' ngModel name='zip' >
+        </div>
+        <div class='form-group'>
+            <label for='stid'>Street</label>
+            <input id='stid' class='form-control' type='text' ngModel name='street' >
+        </div>
+
+
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='officeForm.invalid'>Submit</button>
+        <a [routerLink]="['/office']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+
+    <p  class='alert alert-success' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+   
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>

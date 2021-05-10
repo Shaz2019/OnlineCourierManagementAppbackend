@@ -1,0 +1,35 @@
+<div class='maindiv' *ngIf='errorMessage == null'>
+    <h3 style='text-align:center;'>{{header}}</h3>
+    <table class='table'>
+        <tr>
+            <th>CUSTOMER ID</th>
+            <th>AADHAR NO</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>MOBILE NO</th>
+            <th>ADDRESS ID </th>
+            
+            <th>ACTION</th>
+        </tr>
+        <tr *ngFor='let customer of customers' style='padding:2px'>
+            <td>{{customer.customerId}}</td>
+            <td>{{customer.aadharNo}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.mobileNo}}</td>
+            <td>{{customer.address.addressId}}</td>
+            
+            <td>
+                <button class='btn btn-danger' (click)='delete(customer.customerId)'>Delete</button>
+                <a [routerLink]="['/updateCust',customer.customerId]" class='btn btn-primary'>Modify</a>
+            </td>
+        </tr>
+    </table>
+
+    <div *ngIf='message != null' (click)='message=null' class='alert alert-success'>
+        {{message}}
+    </div>
+</div>
+<div class='alert alert-danger' *ngIf='errorMessage != null'>
+    <h2>{{errorMessage}}</h2>
+</div>

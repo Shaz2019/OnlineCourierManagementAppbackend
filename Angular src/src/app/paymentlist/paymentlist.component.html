@@ -1,0 +1,30 @@
+<div style='background-color:rgb(231, 225, 223)'>
+<table class="table table-hover" *ngIf = "errorMessage == null">
+    <thead>
+      <tr>
+        <th scope="col">paymentId</th>
+        <th scope="col">paymentMode</th>
+        <th scope="col">paymentDate</th>
+        <th scope="col">Courier Id</th>
+
+      
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of payments">
+       
+        <td>{{payment.paymentId}}</td>
+        <td>{{payment.paymentMode}}</td>
+        <td>{{payment.paymentDate}}</td>
+        <td>{{payment.courier.courierId}}</td>
+      
+      </tr>
+    </tbody>
+  </table>
+<div class='alert alert-danger' *ngIf='errorMessage != null'>
+    <h2>{{errorMessage}}</h2>
+</div>
+
+<a [routerLink]="['/payment']"><button class='btn btn-danger btn-block' >Back</button></a>
+</div>

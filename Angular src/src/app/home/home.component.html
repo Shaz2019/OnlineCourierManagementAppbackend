@@ -1,0 +1,62 @@
+
+
+<div> 
+    <h2 class="hr">Welcome To APNA COURIER Service</h2>
+
+</div>
+
+<div style='background-color:rgba(107, 150, 59, 0.705)'>
+    <h5 style='text-align: center;'>Check Your Status</h5>
+
+    <form #courierForm='ngForm' (submit)='get(courierForm)'>
+        <div class='form-group'>
+            <label for="cid">Courier ID</label>
+            <input id='cid' type="number" class='form-control' ngModel name='courierId' #cid='ngModel' required>
+        </div>
+        <button type='submit' class='btn btn-primary' [disabled]='courierForm.invalid'>Submit</button>
+        <a [routerLink]="['/home']"><button class='btn btn-danger'>Back</button></a>
+
+    </form>
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>
+
+<div *ngIf='check' style='background-color:rgba(107, 150, 59, 0.705)' class='emp'>
+    <h3 style='text-align: center;'>Courier Info</h3>
+    <table class='table'>
+        <tr>
+            <th>Courier ID</th>
+            <th>Initiated Date</th>
+            <th>Delivered Date</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>{{courier.courierId}}</td>
+            <td>{{courier.initiatedDate}}</td>
+            <td>{{courier.deliveredDate}}</td>
+            <td>{{courier.status}}</td>
+        </tr>
+    </table>
+    <button class='btn btn-primary' (click)='check=false'>Back</button>
+</div>
+
+
+<div style="text-align: center;">
+    <img src='/assets/home1.jpg' alt="Image">
+</div>
+
+<div style='background-color:rgba(107, 150, 59, 0.705)'>
+
+    <p><strong>Since its inception in 2011 with the path breaking franchise model to the triumphant journey of 10 glorious years , we are always been a front-runner in the journey to "change the rules of the game" in the industry. Our Company has transformed ordinary people with limited resources into successful entrepreneurs.
+
+        Their alignment with this Company through the low-cost franchise system supported their requirements of capital, access to technology, equipment and knowledge. This ignited their pursuit for enterprise and transformed <b>APNA COURIER Service</b> into a household name.
+        
+        Today we boasts of over 5000 successful franchisees (channel partners) across the country, widely studied as case studies at various business schools the world over.</strong></p>
+
+</div>
+
+
+<footer>
+    <p style="text-align: center;"><b>Copy Right  </b> <a href="abc@apnacourier.com">abc@apnacourier.com</a></p>
+  </footer>

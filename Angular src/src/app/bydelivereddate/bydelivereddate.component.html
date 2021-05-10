@@ -1,0 +1,49 @@
+<div>
+    <form #courierForm='ngForm' (submit)='getByDeliveredDate(courierForm.value)'>
+        <div class='form-group'>
+            <label for="dd">Delivery Date</label>
+            <input type="string" id='dd' class='form-control' ngModel name='deliveredDate' #tdd='ngModel' required>
+        </div>
+        <div *ngIf='tdd.touched && tdd.invalid' class='alert alert-danger'>
+            <p>Please enter date it is mandatory field!</p>
+        </div>
+
+        <button type='submit' class='btn btn-success'>Get</button>
+        <a [routerLink]="['/courier']"><button class='btn btn-success'>Back </button></a>
+    </form>
+    <div *ngIf='errorMessage != null' (click)='errorMessage=null' class='alert alert-danger'>
+        {{errorMessage}}
+    </div>
+</div>
+
+
+<div class='maindiv' *ngIf='create'>
+    <table class='table'>
+        <tr>
+            <th>COURIER ID</th>
+            <th>CONSIGNMENT NUMBER</th>
+            <th>INITIATED DATE</th>
+            <th>DELIVERED DATE</th>
+            <th>STATUS</th>
+            <th>RECEIVER CUSTOMER</th>
+            <th>SENDER CUSTOMER</th>
+        </tr>
+        <tr *ngFor='let courier of couriers' style='padding:2px'>
+            <td>{{courier.courierId}}</td>
+            <td>{{courier.consignmentNo}}</td>
+            <td>{{courier.initiatedDate}}</td>
+            <td>{{courier.deliveredDate}}</td>
+            <td>{{courier.status}}</td>
+
+            <td>{{courier.receiver.customerId}}</td>
+            <td>{{courier.sender.customerId}}</td>
+            <!--<td><a [routerLink]="['/update',emp.empid]" class='btn btn-primary'>Modify</a></td>-->
+        </tr>
+    </table>
+
+    <button class='btn btn-success' (click)='create=false'>Back </button>
+    <!--<div *ngIf='errorMessage != null' (click)='errorMessage=null' class='alert alert-danger'>
+        {{errorMessage}}
+    </div>-->
+
+</div>

@@ -1,0 +1,56 @@
+<div class="maind">
+    <h3 style='text-align: center;'>Find Office</h3>
+
+    <form #officeForm='ngForm' (submit)='show(officeForm)'>
+        <div class='form-group'>
+            <label for='oid'>Customer ID</label>
+            <input id='oid' class='form-control' type='number' ngModel name='customerId' #tofficeId='ngModel' required>
+        </div>
+        <div *ngIf='tofficeId.touched && tofficeId.invalid' class='alert alert-danger'>
+            Please enter Office ID. This field is mandatory.
+        </div>
+
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='officeForm.invalid'>Submit</button>
+        <a [routerLink]="['/customer']"><button class='btn btn-danger btn-block'>Back</button></a>
+    </form>
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>
+
+
+
+<div class='maindiv' *ngIf='check==true'>
+    <h3 style='text-align:center;'>{{header}}</h3>
+    <table class='table'>
+        <tr>
+            <th>CUSTOMER ID</th>
+            <th>AADHAR NO</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>MOBILE NO</th>
+            <th>ADDRESS ID </th>
+            <th>ACCOUNT NO</th>
+            <th>ACTION</th>
+        </tr>
+        <tr style='padding:2px'>
+            <td>{{customer.customerId}}</td>
+            <td>{{customer.aadharNo}}</td>
+            <td>{{customer.firstName}}</td>
+            <td>{{customer.lastName}}</td>
+            <td>{{customer.mobileNo}}</td>
+            <td>{{customer.address.addressId}}</td>
+            <td>{{customer.accountNo}}</td>
+            <td>
+                <button class='btn btn-danger' (click)='delete(customer.customerId)'>Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <div *ngIf='message != null' (click)='message=null' class='alert alert-success'>
+        {{message}}
+    </div>
+</div>
+<div class='alert alert-danger' *ngIf='errorMessage != null'>
+    <h2>{{errorMessage}}</h2>
+</div>

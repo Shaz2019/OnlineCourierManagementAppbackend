@@ -1,0 +1,59 @@
+<div style='background-color:rgb(190, 211, 132)'>
+    <form #courierForm='ngForm' (submit)='addCourier(courierForm.value)'>
+        <div class='form-group'>
+            <label for="cid">Courier Id</label>
+            <input id='cid' type="number" class='form-control' ngModel name='courierId' #tId='ngModel' required>
+        </div>
+        <div *ngIf='tId.touched && tId.invalid' class='alert alert-danger'>
+            Please enter courier id. This field required
+        </div>
+
+        <div>
+            <label for="con">Consignment Number</label>
+            <input id='con' type="number" class='form-control' ngModel name='consignmentNo' #tconsignment='ngModel'
+                required>
+        </div>
+        <div *ngIf='tconsignment.touched && tconsignment.invalid' class='alert alert-danger'>
+            Please enter consignment number. This field required
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <input id='status' type="text" class='form-control' ngModel name='status' #tstatus='ngModel' required>
+        </div>
+        <div *ngIf='tstatus.touched && tstatus.invalid' class='alert alert-danger'>
+            Please enter Status. This field required
+        </div>
+
+        <div>
+            <label for="initdate">Initiated Date</label>
+            <input id='initdate' type="text" class='form-control' ngModel name='initiatedDate' #tinitdate='ngModel'
+                required>
+        </div>
+        <div *ngIf='tinitdate.touched && tinitdate.invalid' class='alert alert-danger'>
+            Please enter initiated date. This field is required
+        </div>
+
+        <div>
+            <label for="delDate">Delivered Date</label>
+            <input id='delDate' type="text" class='form-control' ngModel name='deliveredDate' #tdeldate='ngModel'
+                required>
+        </div>
+        <div *ngIf='tdeldate.touched && tdeldate.invalid' class='alert alert-danger'>
+            Please enter delivery date. This field is required
+        </div>
+        <button type='submit' [disabled]='courierForm.invalid' class='btn btn-primary'>Create</button>
+        <a [routerLink]="['/courier']"><button class='btn btn-danger'>Cancel</button></a>
+
+        <div *ngIf='successMessage!=null' class='alert alert-success'>{{successMessage}}</div>
+        <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+            {{errorMessage}}
+        </div>
+        <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+            <p *ngFor='let msg of validationMessages' class='alert alert-danger'>
+                {{msg}}
+            </p>
+        </div>
+
+    </form>
+</div>
+

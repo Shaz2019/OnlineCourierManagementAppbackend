@@ -1,0 +1,48 @@
+<div class='office' style='background-color:rgb(190, 211, 132)' >
+
+    <h3 style="text-align:center">Add New Office</h3>
+
+    <form #officeForm='ngForm' (submit)='createNew(officeForm.value)'>
+        <div class='form-group'>
+            <label for='oid'>Office Id</label>
+            <input id='oid' class='form-control' type='text' ngModel name='officeId' #tofficeId='ngModel' required>
+        </div>
+        <div *ngIf='tofficeId.touched && tofficeId.invalid' class='alert alert-danger'>
+            Please enter Office ID. This field is mandatory.
+        </div>
+
+        <div class='form-group'>
+            <label for='otm'>Opening Time</label>
+            <input id='otm' class='form-control' type='text' ngModel name='openingTime' [pattern]='timePattern' #topeningTime='ngModel' required>
+        </div>
+        <div *ngIf='topeningTime.touched && topeningTime.invalid'>
+            <div *ngIf='topeningTime.errors.required' class='alert alert-danger'>
+                Please enter appropriate opening time.
+            </div>
+            <div *ngIf='topeningTime.errors.pattern' class='alert alert-danger'> 
+				Opening Time not valid.
+			</div>	
+        </div> 
+        <div class='form-group'>
+            <label for='ctm'>Closing Time</label>
+            <input id='ctm' class='form-control' type='text' ngModel name='closingTime' [pattern]='timePattern' #tclosingTime='ngModel' required>
+        </div>
+        <div *ngIf='tclosingTime.touched && tclosingTime.invalid'>
+            <div *ngIf='tclosingTime.errors.required' class='alert alert-danger'>
+                Please enter appropriate closing time.
+            </div>
+            <div *ngIf='tclosingTime.errors.pattern' class='alert alert-danger'> 
+				Closing Time not valid.
+			</div>	
+        </div> 
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='officeForm.invalid'>Submit</button>
+        <a [routerLink]="['/office']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+
+    <p  class='alert alert-success' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+   
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>

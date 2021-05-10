@@ -1,0 +1,44 @@
+<div style="background-color: skyblue;">
+
+<div  >
+    <h3 style="text-align:center">Find Payment</h3>
+
+    <form #paymentForm='ngForm' (submit)='show(paymentForm)'>
+        <div class='form-group'>
+            <label for='pid'>Payment Id</label>
+            <input id='pid' class='form-control' type='number' ngModel name='paymentId' >
+        </div>
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='paymentForm.invalid'>Submit</button>
+        <a [routerLink]="['/payment']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>
+
+<div *ngIf='check==true' class='emp' style='background-color: white rgb(211, 174, 132);'>
+<h3 style='text-align: center;'>Payment Data</h3>
+<table class="table">
+    <tr>
+        <th>Payment ID</th>
+        <th>Payment Mode</th>
+        <th>Payment Date</th>
+        <th>Courier Id</th>
+    </tr>
+
+    <tr style='padding:2px'>
+    
+        <td>{{pay.paymentId}}</td>
+        <td>{{pay.paymentMode}}</td>
+        <td>{{pay.paymentDate}}</td>
+        <td>{{pay.courier.courierId}}</td>
+        
+
+        
+    </tr>
+
+</table>
+
+<a [routerLink]="['/payment']"><button class='btn btn-danger btn-block' >Back</button></a>
+</div>
+</div>

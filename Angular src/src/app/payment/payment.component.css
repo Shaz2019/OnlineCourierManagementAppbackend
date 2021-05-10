@@ -1,0 +1,5 @@
+.img{    
+    background-image: url('/assets/p2.jpg.png');
+    height: 100%;
+    background-size: cover;
+  }

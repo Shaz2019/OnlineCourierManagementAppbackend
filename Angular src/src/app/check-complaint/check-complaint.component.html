@@ -1,0 +1,36 @@
+<div style='background-color:rgb(190, 211, 132)' >
+    <h3 style="text-align:center">Check Complaint</h3>
+
+    <form #compForm='ngForm' (submit)='show(compForm)'>
+        <div class='form-group'>
+            <label for='cid'>Complaint Id</label>
+            <input id='cid' class='form-control' type='number' ngModel name='compId' >
+        </div>
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='compForm.invalid'>Submit</button>
+        <a [routerLink]="['/complaint']"><button class='btn btn-danger btn-block' >Back</button></a>
+    </form>
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+</div>
+
+<div style="background-color:rgb(158, 81, 81);">
+<div *ngIf="check==true" >
+    <h3 style="text-align: center;"> Complaint Status Shown</h3>
+    <table class="table">
+        <tr>
+            <th>Complaint Id</th>
+            <th>detailed Description</th>
+            <th>Short Description</th>
+            <th>Courier Id</th>
+        </tr>
+        <tr style="padding: 2px;">
+            <td>{{com.complaintId}}</td>
+            <td>{{com.detailedDescription}}</td>
+            <td>{{com.shortDescription}}</td>
+            <td>{{com.courierId.courierId}}</td>
+        </tr>
+    </table>
+    <a [routerLink]="['/complaint']"><button class='btn btn-danger btn-block' >Back</button></a>
+</div>
+</div>

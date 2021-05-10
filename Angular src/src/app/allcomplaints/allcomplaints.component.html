@@ -1,0 +1,21 @@
+
+<div style='background-color:rgb(231, 225, 223)' >
+    <h3 style='text-align:center;'>Complaint data</h3>
+    <table class="table table-hover">
+        <tr>
+            <th>ComplaintId</th>
+            <th>Short Description</th>
+            <th>Detailed Description</th>
+            <th>CourierId</th>
+        </tr>
+        <tr *ngFor='let comp of complaints' style='padding:2px'>
+            <td>{{comp.complaintId}}</td>
+            <td>{{comp.shortDescription}}</td>
+            <td>{{comp.detailedDescription}}</td>
+            <td>{{comp.courierId.courierId}}</td>
+        </tr>
+
+    </table>
+    <a [routerLink]="['/manager']"><button class='btn btn-danger btn-block' >Back</button></a>
+    
+</div>
